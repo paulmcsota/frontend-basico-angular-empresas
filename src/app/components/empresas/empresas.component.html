@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="background-general">
+   <div class="container-xl">
+
+      <div class="row widgets animated fadeIn fast">
+         <div class="col-lg-5 text-center mt-4 card-details" style="background-color: #787878;">
+            <h3 class="fw-normal pt-3">EMPRESA MAS VENTAS</h3>
+            <h5>{{empresaMasVentas}}</h5>
+            <h1 class="pb-3">${{cantidadMasVentas}}</h1>
+         </div>
+         <div class="col-lg-5 text-center mt-4 card-details" style="background-color: #787878;">
+            <h3 class="fw-normal pt-3">MES MAS VENTAS</h3> <br>
+            <h1 class="pb-3">{{mesMayorVentas}}</h1>
+         </div>
+      </div>
+
+      <div class="row mt-4 animated fadeIn">
+         <span class="text-center" *ngIf="loading">Cargando...</span>
+         
+         <span style="font-size: 12px;"> Mostrando {{totalRegistros}} registros</span>
+         <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+      </div>
+
+
+   </div>
+
+
+</div>

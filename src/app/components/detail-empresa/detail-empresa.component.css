@@ -1,0 +1,44 @@
+:host /deep/ ng2-smart-table table{
+   border-color: grey; /* border of the big table*/
+}
+:host /deep/ ng2-smart-table thead > tr > th  { 
+   /* color: #333 !important; */
+   background-color:#dbd9d9 !important;
+}  
+:host /deep/ ng2-smart-table thead > tr > th a.ng2-smart-sort-link.sort {
+   color: #000000 !important;
+}
+
+
+:host /deep/ .page-item.disabled .page-link {
+	color: darkgray !important;
+}
+:host /deep/ .page-item.active .page-link {
+	background: #6c757d !important;
+	color: white !important;
+	border: 1px solid #6c757d !important;
+}
+:host /deep/ .page-item {
+	margin: 3px;
+}
+:host /deep/ .page-link {
+	color: black !important;
+	padding: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 3px !important;
+}
+:host /deep/ .page-link:hover {
+	background-color: #6c757d !important;
+	color: white !important;
+	border: 1px solid #6c757d;
+}
+:host /deep/ .ng2-smart-pagination .page-link-prev {
+	font-size: 14px !important;
+}
+:host /deep/ .ng2-smart-pagination .page-link-next {
+	font-size: 14px !important;
+}
+:host /deep/ .ng2-smart-page-item a:hover {
+	text-decoration: none !important;
+}
