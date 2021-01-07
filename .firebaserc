@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-heyandes-e1e5f": {
+      "hosting": {
+        "frontend-heyAndes": [
+          "angular-heyandes-e1e5f"
+        ]
+      }
+    }
+  }
+}

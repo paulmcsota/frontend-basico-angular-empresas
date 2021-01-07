@@ -1,5 +1,3 @@
-<app-navbar></app-navbar>
-
 
 <div class="background-general">
    <div class="container-xl animated fadeIn">
@@ -13,8 +11,10 @@
 
       <div class="row mt-4">
          <span class="text-center" *ngIf="loading">Cargando...</span>
-         <span style="font-size: 12px;"> Mostrando {{totalRegistros}} registros</span>
-         <ng2-smart-table [settings]="settings" [source]="listadoVentas"></ng2-smart-table>
+         <div *ngIf="!loading">
+            <span style="font-size: 12px;"> Mostrando {{totalRegistros}} registros</span>
+            <ng2-smart-table [settings]="settings" [source]="listadoVentas"></ng2-smart-table>
+         </div>
       </div>
 
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -9,14 +9,11 @@ import { Router } from '@angular/router';
             class="btn btn-secondary btn-sm">Ver detalle</button>
   `,
 })
-export class ButtonRenderComponent implements OnInit {
+export class ButtonRenderComponent {
    @Input() value: any;
    constructor(private router: Router) {  }
 
-   ngOnInit() {
-   }
-
-   verDetalles() {
+   verDetalles(): void {
       this.router.navigate(['/empresas', this.value]);
    }
 }

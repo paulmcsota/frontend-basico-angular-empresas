@@ -49,14 +49,15 @@ export class DetailEmpresaComponent implements OnInit {
       }
    };
 
-   nameAgency: string = '';
+   nameAgency = '';
    listadoVentas: DetalleEmpresa[] = [];
-   totalRegistros: number = 0;
+   totalRegistros = 0;
 
-   loading: boolean = false;
+   loading = false;
 
    constructor(private actRoute: ActivatedRoute,
-               private empresaService: EmpresasService) { 
+               private empresaService: EmpresasService) {
+
       this.actRoute.params.subscribe((params: any) => {
          this.nameAgency = String(params.nombre_empresa);
 

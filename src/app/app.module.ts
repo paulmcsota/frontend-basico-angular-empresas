@@ -4,26 +4,34 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AppRoutingModule } from './app-routing.module';
+import { ComponentsModule } from './components/components.module';
+import { AngularFireModule } from '@angular/fire';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { EmpresasComponent } from './components/empresas/empresas.component';
-import { DetailEmpresaComponent } from './components/detail-empresa/detail-empresa.component';
+import { EmpresasComponent } from './pages/empresas/empresas.component';
+import { DetailEmpresaComponent } from './pages/detail-empresa/detail-empresa.component';
+
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
    declarations: [
       AppComponent,
-      NavbarComponent,
-      EmpresasComponent,
       DetailEmpresaComponent,
+      EmpresasComponent,
    ],
    imports: [
-      BrowserModule,
-      HttpClientModule,
       AppRoutingModule,
-      Ng2SmartTableModule
+      BrowserModule,
+      ComponentsModule,
+      HttpClientModule,
+      Ng2SmartTableModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      AngularFirestoreModule
    ],
    providers: [],
-   bootstrap: [AppComponent]
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

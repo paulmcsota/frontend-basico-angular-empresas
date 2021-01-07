@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { EmpresasService } from '../../services/empresas.service';
 import { ButtonRenderComponent } from './button.render.component';
 import { EmpresasTotal } from '../../interfaces/interfaceEmpresas';
@@ -56,12 +55,12 @@ export class EmpresasComponent implements OnInit {
       }
    };
    data: EmpresasTotal[] = [];
-   cantidadMasVentas: number = 0;
-   empresaMasVentas: string = '';
-   mesMayorVentas: string = '';
-   totalRegistros: number = 0;
+   cantidadMasVentas = 0;
+   empresaMasVentas = '';
+   mesMayorVentas = '';
+   totalRegistros = 0;
 
-   loading: boolean = false;
+   loading = false;
 
    constructor(private empresaService: EmpresasService) { }
 
@@ -81,5 +80,4 @@ export class EmpresasComponent implements OnInit {
       this.mesMayorVentas = await this.empresaService.getMayorVentasMes();
 
    }
-   
 }

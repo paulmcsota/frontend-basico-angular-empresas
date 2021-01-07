@@ -35,7 +35,7 @@
               "src/assets/js/bootstrap.bundle.min.js"
             ],
             "allowedCommonJsDependencies": [
-               "lodash"
+              "lodash"
             ]
           },
           "configurations": {
@@ -126,6 +126,10 @@
               "devServerTarget": "frontend-heyAndes:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

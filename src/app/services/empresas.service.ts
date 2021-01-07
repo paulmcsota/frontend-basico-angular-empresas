@@ -1,39 +1,38 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DetalleEmpresa, Empresas, EmpresasTotal, EmpresasTotalPorMes, TotalPorMes } from '../interfaces/interfaceEmpresas';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 const monthNames = [
-   'Enero', 'February', 'March', 'April', 'May', 'June','July', 'August', 'September', 'October', 'November', 'December'
+   'Enero', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
 ];
 @Injectable({
   providedIn: 'root'
 })
 export class EmpresasService {
 
-   constructor(private http: HttpClient) { }
+   constructor(private firestore: AngularFirestore) { }
 
    async getEmpresas(): Promise<Empresas[]> {
-      return new Promise<Empresas[]>(resolve => {
-         this.http.get<Empresas[]>('/assets/data/sales.json').subscribe(resp => {
-            if (resp) {
-               resolve(resp);
+      return new Promise<any>(resolve => {
+         this.firestore.collection('heyAndes').valueChanges().subscribe((resp: any) => {
+            if (resp[0].empresas.length > 0) {
+               resolve(resp[0].empresas);
             }
          });
       });
    }
 
-
    async getTotalVentasPorMes(): Promise<EmpresasTotalPorMes[]> {
       const totalEmpresas = await this.getEmpresas();
 
-      let totalVentasPorMes: EmpresasTotalPorMes[] = [];
+      const totalVentasPorMes: EmpresasTotalPorMes[] = [];
 
       totalEmpresas.forEach( emp => {
 
          const month = new Date(emp.datePayment).getMonth();
 
-         const newEmpresa = totalVentasPorMes.find( x => x.nameAgency === emp.nameAgency && x.month === monthNames[month]); 
+         const newEmpresa = totalVentasPorMes.find( x => x.nameAgency === emp.nameAgency && x.month === monthNames[month]);
 
          if (!newEmpresa) {
             totalVentasPorMes.push({
@@ -52,7 +51,7 @@ export class EmpresasService {
    async getTotalVentasEmpresas(): Promise<EmpresasTotal[]> {
       const totalEmpresas = await this.getTotalVentasPorMes();
 
-      let totalVentasEmpresas: EmpresasTotal[] = [];
+      const totalVentasEmpresas: EmpresasTotal[] = [];
 
       totalEmpresas.forEach( emp => {
 
@@ -74,7 +73,7 @@ export class EmpresasService {
    async getMayorVentasMes(): Promise<string> {
       const totalVentasPorMes = await this.getTotalVentasPorMes();
 
-      let ventasPorMes: TotalPorMes[] = [];
+      const ventasPorMes: TotalPorMes[] = [];
 
       totalVentasPorMes.forEach( emp => {
 
@@ -95,10 +94,10 @@ export class EmpresasService {
       return month;
    }
 
-   async getVentasPorEmpresa(nombre_empresa: string): Promise<DetalleEmpresa[]> {
+   async getVentasPorEmpresa(nombreEmpresa: string): Promise<DetalleEmpresa[]> {
       const empresas = await this.getEmpresas();
       const listadoVentas = empresas
-         .filter(emp => emp.nameAgency === nombre_empresa)
+         .filter(emp => emp.nameAgency === nombreEmpresa)
          .map( emp => ({
                name: emp.name,
                persons: emp.persons,
