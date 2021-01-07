@@ -2,6 +2,8 @@
 
 Este proyecto ha sido generado con [Angular CLI](https://github.com/angular/angular-cli) versión 11.0.5.
 
+Una vez clonada la aplicación no olvidar de ejecutar `npm install` para instalar todos los paquetes de dependencia.
+
 ## Build
 
 Para deseplegar el proyecto a producción debe ejecutar el comando `ng build --prod` que generará los archivos en la carpeta predeterminada `dist/frontend-heyAndes` (La carpeta puede modificarse en el archivo `angular.json`).
